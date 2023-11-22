@@ -10,38 +10,65 @@
 
 <div class="page-header mt-5">
 <div class="row">
+@if(session('status'))
+        <div class="alert alert-success col-12" rol="alert" id="CanceldText" style="display:flex; justify-content: space-between;">
+        {{session('status')}}
+        <button class="btn-close me-auto btn btn-danger" onclick="CancelFunction()" id="CancelAlert" type="button" data-bs-dismiss="alert"> X </button>    
+
+        </div>
+        
+        @elseif(session('error'))
+        <div class="alert alert-danger text-center" rol="alert">
+            {{session('error')}}
+        </div>
+        @endif
+        </div>
+<div class="row">
 
 <div class="col-lg-12">
 <div class="card">
 <div class="card-header">
-<h4 class="card-title">Striped Rows</h4>
+<h4 class="card-title">
+    <a href="{{route('admin.savequestion')}}" class="btn btn-info mb-5"> Add a Question </a>
+</h4>
+<h4 class="card-title">All Questions </h4>
+
 </div>
 <div class="card-body">
 <div class="table-responsive">
 <table class="table table-striped mb-0">
 <thead>
 <tr>
-<th>Firstname</th>
-<th>Lastname</th>
- <th>Email</th>
+<th>Question</th>
+<th>F.Answer</th>
+ <th>S.Answer</th>
+ <th>T.Answer</th>
+ <th>F.Answer</th>
+ <th>Final.Answer</th>
+ <th>Categori</th>
+ <th>Action</th>
 </tr>
 </thead>
 <tbody>
+    @foreach($Questions as $Question)
 <tr>
-<td>John</td>
-<td>Doe</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b8bdbabc92b7aab3bfa2beb7fcb1bdbf">[email&#160;protected]</a></td>
+<td>{{$Question->question}}</td>
+<td>{{$Question->answerone}}</td>
+<td>{{$Question->answertow}}</td>
+<td>{{$Question->answerthree}}</td>
+<td>{{$Question->answerfour}}</td>
+<td><a class="btn btn-primary" data-cfemail="d2b8bdbabc92b7aab3bfa2beb7fcb1bdbf"> {{$Question->finalanswer}} </a></td>
+<td>{{$Question->name}}</td>
+<td class="d-flex">
+    <a href="{{ route('admin.editquestion' , Crypt::encryptString($Question->question_id))}}" class="btn btn-success mr-2" data-cfemail="d2b8bdbabc92b7aab3bfa2beb7fcb1bdbf">Edit</a>
+    <a href="{{ route('admin.deletequestion' , Crypt::encryptString($Question->question_id))}}" class="btn btn-danger" data-cfemail="d2b8bdbabc92b7aab3bfa2beb7fcb1bdbf">Delete</a>
+
+</td>
+
 </tr>
-<tr>
-<td>Mary</td>
-<td>Moe</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91fcf0e3e8d1f4e9f0fce1fdf4bff2fefc">[email&#160;protected]</a></td>
-</tr>
-<tr>
-<td>July</td>
-<td>Dooley</td>
-<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8de7f8e1f4cde8f5ece0fde1e8a3eee2e0">[email&#160;protected]</a></td>
-</tr>
+@endforeach
+ 
+ 
 </tbody>
 </table>
 </div>

@@ -8,6 +8,12 @@
 	<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
 	<script src="{{ asset('assets/js/chart.morris.js') }}"></script>
 	<script src="{{ asset('assets/js/script.js') }}"></script>
+	<script>
+       var x =  document.getElementById("CancelAlert");
+       function CancelFunction(){
+        var y  = document.getElementById("CanceldText").style.display="none";
+       }
+    </script>
 </body>
 
 </html>

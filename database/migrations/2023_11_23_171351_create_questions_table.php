@@ -24,6 +24,13 @@ class CreateQuestionsTable extends Migration
             $table->string('answerfour' , 256);
             // $table->string('language');
             $table->string('finalanswer' , 256);
+
+              
+            $table->unsignedBigInteger('cat_id')->nullable();
+            $table->foreign('cat_id')->references('cat_id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            
+
+
             $table->timestamps();
         });
     }
