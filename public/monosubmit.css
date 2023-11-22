@@ -1,0 +1,117 @@
+
+.container11{
+    max-width: 700px;
+    width: auto;
+    height: auto;
+    margin-top: 10%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 9px 9px #13aa87;
+    position: relative;
+}
+.container11 .heading11{
+    margin-top: 5%;
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    padding: 0 0 0px 0;
+}
+.container11 .heading11::before{
+    position: relative;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.container11 form .card-details11{
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+form .card-details11 .card-box11{
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 15px;
+}
+.card-details11 .card-box11 .details11{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.card-details11 .card-box11 input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #13aa87;
+    margin: auto;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.card-details11 .card-box11 select{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #13aa87;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.card-details11 .card-box11 input:focus,
+.card-details11 .card-box11 input:valid{
+    border-color: #13aa87;
+}
+form .button11{
+    text-align: center;
+}
+form .button11 input{
+    padding: 10px 0;
+    margin-top: 10px;
+    height: 100%;
+    width: 50%;
+    outline: none;
+    color: rgb(10, 10, 10);
+    border: 1px solid #13aa87;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background-color: #13aa87;
+    color: white;
+}
+form .button11 input:hover{
+    background-color: transparent;
+    color: black;
+}
+
+@media (max-width:584px){
+    .container11{
+        max-width: 100%;
+    }
+    form .card-details11 .card-box11{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .container11 form .card-details11{
+        max-height: 300px;
+        overflow: scroll;
+    }
+    .card-details11::_webkit-scrollbar{
+        width: 0;
+    }
+}
+.optional{
+    text-align: center;
+}

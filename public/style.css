@@ -1,0 +1,175 @@
+@font-face {
+    font-family: yekan;
+    src: url('fonts/iranyekanwebbold.ttf') format("truetype");
+}
+*{
+    font-family: yekan;
+}
+.sidebar{
+    height: 100vh;
+    background-image: linear-gradient(rgba(0 , 0 , 0, .7) , rgba( 0 , 0 , 0, .9));
+   box-shadow: -5px 7px 25px #999; 
+   overflow: scroll;
+}
+.bottom-border{
+    border-bottom: 1px  groove #eee;
+}
+.userphoto{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.sidebar-link{
+    transition: all.4s;
+}
+.sidebar-link:hover{
+    background-color: #444;
+    border-radius: 5px;
+}
+.sidebar-link:active{
+    background-color: #f44336;
+}
+.current{
+    background-color: #f44336;
+    border-radius: 7px;
+    box-shadow: 2px 5px 10px #111;
+    transition: all .4s;
+}
+.current:hover{
+    background-color: #f66436;
+    transform: translateY(-1px);
+}
+.search-button{
+   border-radius: 50%;
+   padding: 10px 16px;
+}
+.search-button:hover{
+    background-color: #eee;
+    transform: translateY(-1px);
+}
+.search-input{
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid #999;
+  transition: all .4s;
+}
+.search-input:placeholder-shown{
+    color: white;
+}
+.search-input:focus{
+    background: transparent;
+    color: white;
+    box-shadow: none;
+    border-bottom: 2px solid #dc3545;
+}
+/*       table start */
+
+
+.heading{
+    font-size: 20px;
+    color: #f1f1f1;
+}
+@media(min-width: 300px){
+    .table-container .heading{
+        margin-top: auto;
+    }
+}
+.table1{
+    width: 100%;
+}
+.table1 thead{
+    background-color: #000000;
+}
+.table1 thead tr th{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    color: #ffffff;
+    opacity: 1;
+    padding: 12px;
+    vertical-align: top;
+    border: 1px solid #dee2e685;
+}
+.table1 tbody tr td{
+    font-size: 14px;
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    color: #f1f1f1;
+    background-color: #3c3f44;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #dee2e685;
+}
+.table1 tbody tr td .btn{
+    width: 130px;
+    text-decoration: none;
+    line-height:35px;
+    display: inline-block;
+    background-color:  #14bf98;
+    font-weight: medium;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    user-select:  none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    opacity: 1;
+}
+table tbody tr td:hover{
+    color: gray;
+    cursor: pointer;
+}
+tr td a{
+    border-radius: 10px;
+}
+@media (max-width: 768px){
+    .table1 thead{
+        display: none;
+    }
+    .table1, .table1 tbody, .table1 tr, .table1 td{
+        display: block;
+        width: 100%;
+    }
+    .table1 tr{
+        margin-bottom: 15px;
+    }
+    .table1 tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .table1 td:before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+    }
+    /* Table finish */
+}
+
+
+@media(max-width:768px){
+    .top-navbar{
+        position: static;
+
+    }
+    .sidebar{
+        position: static;
+        height: auto;
+    }
+   
+}
+
+
+
+
+/* ....................Card..................... */
+card-common{
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+}
+.card-common:hover{
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+}

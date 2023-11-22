@@ -1,0 +1,53 @@
+
+
+.count1{
+    position: relative;
+    width: 400px;
+    background: transparent;
+    padding: 20px 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.count1 .post1{
+    display: none;
+}
+.count1 .text1{
+    font-size: 25px;
+    color: #13aa87;
+    font-weight: 500;
+}
+.count1 .star-widget1 input{
+    display: none; 
+}
+.star-widget1 label{
+    font-size: 40px;
+    color: #13aa87;
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label
+{
+    color: #fd4;
+}
+input:checked ~ label{
+    color: #fd4;
+}
+input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+}
+
+form header{
+    width: 100%;
+    font-size: 25px;
+    color: #fe7;
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}

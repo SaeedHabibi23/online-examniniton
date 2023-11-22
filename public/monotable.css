@@ -1,0 +1,130 @@
+
+
+.heading{
+    font-size: 30px;
+    text-align: center;
+    color: #f1f1f1;
+    margin-bottom: 40px;
+}
+@media(min-width: 300px){
+    .table-container .heading{
+        margin-top: auto;
+    }
+}
+.table1{
+    width: 100%;
+    font-size: 12px;
+}
+
+.table1 thead{
+    background-color: #000000;
+    font-size: 12px;
+}
+.table1 thead tr th{
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    color: #ffffff;
+    opacity: 1;
+    padding: 12px;
+    vertical-align: top;
+    border: 1px solid #dee2e685;
+}
+.table1 tbody tr td{
+    font-size: 12px;
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    color: #f1f1f1;
+    background-color: #3c3f44;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #dee2e685;
+}
+
+table tbody tr td:hover{
+    color: gray;
+    cursor: pointer;
+}
+tr td a{
+    border-radius: 10px;
+}
+@media (max-width: 1000px){
+    .table1 thead{
+        display: none;
+    }
+    .table1, .table1 tbody, .table1 tr, .table1 td{
+        display: block;
+        width: 100%;
+    }
+    .table1 tr{
+        margin-bottom: 15px;
+    }
+    .table1 tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .subjecttd{
+        width: 100% !important;
+    }
+    .table1 td:before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+    }
+}
+
+.save{
+    color: rgb(63, 57, 57);
+}
+.save:hover{
+    color: rgb(255, 255, 255);
+}
+
+
+
+input{
+    padding: 10px 20px;
+    outline: none;
+    border: 1px solid  #28e1ee;
+    border-radius: 6px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+input:placeholder-shown{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.pagination{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 10px 20px;
+    outline:  #dee2e685;
+}
+.pagination div{
+    padding: 10px;
+    border: 2px solid #ffffff;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination div:hover{
+    background-color: #14bf98;
+}
+
+.htrm{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
+
