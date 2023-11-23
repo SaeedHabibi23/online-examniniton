@@ -69,7 +69,8 @@ Route::group(['prefix' => 'admin' , 'middleware'=>['isAdmin' , 'auth', 'PreventB
 
     Route::post('saveviafile', [QuestionController::class , 'saveviafile'])->name('admin.saveviafile');
 
-    
+    Route::get('seeresult', [QuestionController::class , 'seeresult'])->name('admin.seeresult');
+
     
 });
 
@@ -79,6 +80,10 @@ Route::group(['prefix' => 'user' , 'middleware'=>['isUser' , 'auth', 'PreventBac
     Route::get('settings', [UserController::class , 'settings'])->name('user.settings');
     Route::get('exammode', [UserController::class , 'exammode'])->name('user.exammode');
     Route::get('startexam', [UserController::class , 'startexam'])->name('user.startexam');
+    Route::get('nextquestion/{question_id}', [UserController::class , 'nextquestion'])->name('user.nextquestion');
+    Route::get('previousquestion/{question_id}', [UserController::class , 'previousquestion'])->name('user.previousquestion');
+
+    Route::get('checkresult', [UserController::class , 'checkresult'])->name('user.checkresult');
 
     
 });

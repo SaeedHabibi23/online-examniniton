@@ -127,7 +127,7 @@ body {
     </nav>
     <div class="mainContent">
         <div class="subMainContent">
-            <p>Item {{$data['Questions']->question_id}} of {{$data['Questions']->count()}} (Exam A, Q7)</p>
+            <p>Item 2 of 691 (Exam A, Q7)</p>
             <ul class="nav-links">
                 <li class="choseBtn">
                     <button>Show Answer</button>
@@ -137,21 +137,12 @@ body {
         </div>
         <div class="subMainContent1">
             <p> {{$data['Questions']->question}} </p>
-
-            <p>
-            @error('valueone')
-                    <span style="color:red;">{{$message}}</span>
-              @enderror
-              @if(session('status'))
-              <span style="color:red;">{{session('status')}}</span>
-              @endif
-              </p>
-            <form action="{{ route('user.nextquestion' , Crypt::encryptString($data['Questions']->question_id))}}" method="get">
+            <form action="/">
                 <input type="radio" value="1" name="valueone"><label for="a"> A. {{$data['Questions']->answerone}} </label><br>
                 <input type="radio" value="2" name="valueone"><label for="a"> B. {{$data['Questions']->answertow}} </label><br>
                 <input type="radio" value="3" name="valueone"><label for="a"> C. {{$data['Questions']->answerthree}} </label><br>
                 <input type="radio" value="4" name="valueone"><label for="a"> D. {{$data['Questions']->answerfour}} </label><br>
-           
+            </form>
         </div>
     </div>
     <footer style="position: sticky;">
@@ -160,16 +151,22 @@ body {
                 <p>Select the best choice</p>
             </div>
             <div class="footerForm">
+                <form action="/">
                 <label for="resolution">50%</label>
                   <input type="range" id="resolution" value="50" min="0" max="100" step="1">
+                </form>
             </div>
         </div>
         <div class="footerBtn">
             <div>
-                <button> <a style="text-decoration:none; color:black;" href="{{ route('user.previousquestion' , Crypt::encryptString($data['Questions']->question_id))}}"> Previous </a></button>
+                <button> 
+                    <a style="text-decoration:none; color:black;" href="{{ route('user.previousquestion' , Crypt::encryptString($data['Questions']->question_id))}}">
+                    
+                    
+                    Previous </a>
                 
-                <input type="submit" style="height:28px; cursor:pointer;" value="Next"> 
-                </form>
+                </button>
+                <button> <a style="text-decoration:none; color:black;" href="{{ route('user.nextquestion' , Crypt::encryptString($data['Questions']->question_id))}}"> Next </a></button>
                 <select name="review" id="review">
                     <option value="reviewAll">Review All</option>
                     <option value="reviewAll">Review just once</option>

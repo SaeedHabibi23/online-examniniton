@@ -60,30 +60,29 @@
                 <input type="text" id="CandidateName" name="CandidateName" placeholder="Candidate Name">
             </form>
         </div>
-        <form action="/">
+        <form action="{{route('user.startexam')}}" method="get">
+            @csrf
             <fieldset>
               <legend>Exam Mode</legend>
               <input type="radio">Take selected exam :
-              <select name="exam" id="exam">
-                <option value="examA">Exam A</option>
-                <option value="examA">Exam B</option>
-                <option value="examA">Exam C</option>
-                <option value="examA">Exam D</option>
-                <option value="examA">Exam E</option>
+              <select name="cat_id" id="exam">
+                @foreach($categories as $categorie)
+                <option value="{{$categorie->cat_id}}"> {{$categorie->name}} </option>
+                @endforeach
               </select><br>
               <input type="radio" id="question" name="question"> Take questions from selected sections only: <br>
               <textarea name="" id="" cols="35" rows="10" placeholder="There are no sections in the exam."></textarea><br>
               <div>
-                <button class="choseableBtn">Select All</button>
-                <button class="choseableBtn">Deselect All</button>
+                <button class="choseableBtn" disabled>Select All</button>
+                <button class="choseableBtn" disabled>Deselect All</button>
               </div>
               <input type="radio"> Take
-              <input type="number" value="691"> questions from entire exam file <br><br>
+              <input type="number" style="width:40px;" value="691" disabled> questions from entire exam file <br><br>
               <input type="radio"> Take question range from 
-              <input type="number" value="1" style="width:40px;"> to <input type="number" style="width:40px;" value="691"><br><br>
+              <input type="number" value="1" style="width:40px;" disabled> to <input type="number" style="width:40px;" disabled value="691"><br><br>
               <input type="radio"> Take question that I have answered incorrectly 
-              <input type="number" value="1"> or more times <br><br>
-              <input type="radio"> Training mode <br>
+              <input type="number" value="1" style="width:40px;"> or more times <br><br>
+              <input type="checkbox"> Training mode <br>
             </fieldset>
             <fieldset>
                 <legend>Timer</legend>
@@ -92,14 +91,14 @@
                         <input type="checkbox"><label for="timer">Timer on</label>
                     </div>
                     <div>
-                        <label for="limit">Time limit (minutes): </label><input type="number" value="120">
+                        <label for="limit">Time limit (minutes): </label><input type="number"  style="width:70px;" value="120">
                     </div>
                 </div>
               </fieldset>
               <div >
-                <button class="selectBtn">
-                    <a href="{{route('user.startexam')}}" style="text-decoration:none;"> OK </a>
-                </button>
+                <input type="submit" value="Start Exam" class="selectBtn">
+                    
+                
                 <button class="selectBtn">Cancle</button>
               </div>
           </form>

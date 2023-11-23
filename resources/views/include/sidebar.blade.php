@@ -9,6 +9,8 @@
 
 						<li> <a href="{{route('admin.showquestion')}}"><i class="fas fa-calendar-alt"></i> <span>Manage Questions</span></a> </li>
 					
+						<li> <a href="{{route('admin.seeresult')}}"><i class="fas fa-calendar-alt"></i> <span> See Result </span></a> </li>
+					
 					
 					
 					

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\categories;
 use Illuminate\Support\Facades\Crypt;
-use App\imports\QuestionImport;
+use App\Imports\QuestionImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Result;
+
 
 class QuestionController extends Controller
 {
@@ -104,6 +106,13 @@ class QuestionController extends Controller
     public function saveviafile(){
         Excel::Import(new QuestionImport , request()->file('file'));
         return redirect()->back();
+    }
+
+
+    public function seeresult(){
+        $Result = Result::join('users' , 'users.id' , 'results.id')
+        ->paginate(60);
+        return view('dashboards.admins.Questions.seeresult' , compact('Result'));
     }
 
 }

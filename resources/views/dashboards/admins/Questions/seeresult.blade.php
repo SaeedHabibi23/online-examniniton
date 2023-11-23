@@ -29,7 +29,6 @@
 <div class="card">
 <div class="card-header">
 <h4 class="card-title">
-    <a href="{{route('admin.addcategori')}}" class="btn btn-info mb-5"> Add a Categori </a>
 </h4>
 <h4 class="card-title">All Categories</h4>
 
@@ -39,24 +38,21 @@
 <table class="table table-striped mb-0">
 <thead>
 <tr>
-<th>Cat_id</th>
-<th>C_Name</th>
-<th>Timer</th>
+<th>Name</th>
+<th>email</th>
+<th>Correct Answer</th>
+<th>Incorrect Answer</th>
 
- <th>Action</th>
 </tr>
 </thead>
 <tbody>
-    @foreach($categories as $categorie)
+    @foreach($Result as $Resul)
 <tr>
-<td>{{$categorie->cat_id}}</td>
-<td>{{$categorie->name}}</td>
-<td>{{$categorie->timer}}</td>
-<td class="d-flex">
-    <a href="{{ route('admin.editcategori' , Crypt::encryptString($categorie->cat_id))}}" class="btn btn-success mr-2" data-cfemail="d2b8bdbabc92b7aab3bfa2beb7fcb1bdbf">Edit</a>
-    <a href="{{ route('admin.deletecategori' , Crypt::encryptString($categorie->cat_id))}}" class="btn btn-danger" data-cfemail="d2b8bdbabc92b7aab3bfa2beb7fcb1bdbf">Delete</a>
+<td>{{$Resul->name}}</td>
+<td>{{$Resul->email}}</td>
+<td>{{$Resul->correctanswer}}</td>
+<td>{{$Resul->incorrectanswer}}</td>
 
-</td>
 
 </tr>
 @endforeach
@@ -64,6 +60,7 @@
  
 </tbody>
 </table>
+{{$Result->links()}}
 </div>
 </div>
 </div>
