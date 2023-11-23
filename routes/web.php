@@ -65,6 +65,10 @@ Route::group(['prefix' => 'admin' , 'middleware'=>['isAdmin' , 'auth', 'PreventB
     Route::get('changepassword', [AdminController::class , 'changepassword'])->name('admin.changepassword');
     Route::post('changepasscompleted', [AdminController::class , 'changepasscompleted'])->name('admin.changepasscompleted');
 
+    Route::get('importviafile', [QuestionController::class , 'importviafile'])->name('admin.importviafile');
+
+    Route::post('saveviafile', [QuestionController::class , 'saveviafile'])->name('admin.saveviafile');
+
     
     
 });

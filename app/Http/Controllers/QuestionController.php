@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\categories;
 use Illuminate\Support\Facades\Crypt;
+use App\imports\QuestionImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class QuestionController extends Controller
 {
@@ -94,6 +96,14 @@ class QuestionController extends Controller
         $question->delete();
         return redirect()->back()->with('status' , 'Question Deleted Successfully Done!');
     
+    }
+    public function importviafile(){
+        return view('dashboards.admins.Questions.importviafile');
+
+    }
+    public function saveviafile(){
+        Excel::Import(new QuestionImport , request()->file('file'));
+        return redirect()->back();
     }
 
 }

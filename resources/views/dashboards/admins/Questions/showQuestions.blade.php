@@ -28,9 +28,13 @@
 <div class="col-lg-12">
 <div class="card">
 <div class="card-header">
-<h4 class="card-title">
+<h4 class="card-title " style="display:inline !important;">
     <a href="{{route('admin.savequestion')}}" class="btn btn-info mb-5"> Add a Question </a>
 </h4>
+<h4 class="card-title " style="display:inline !important;">
+    <a href="{{route('admin.importviafile')}}" class="btn btn-info mb-5">  Import Via File </a>
+</h4>
+
 <h4 class="card-title">All Questions </h4>
 
 </div>
