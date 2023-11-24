@@ -23,8 +23,12 @@ class UserController extends Controller
     }
     public function startexam(Request $request){
         $cat_id = $request->cat_id;
+        $valueone = $request->valueone;
+        $valuetwo = $request->valuetwo;
+        
         // return $cat_id;
         $Questions = Questions::join('categories' , 'categories.cat_id' , 'questions.cat_id')
+        ->where('categories.cat_id' , '=' , $cat_id)
         ->orderBy('question_id')
         ->first();
 

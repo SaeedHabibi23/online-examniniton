@@ -79,7 +79,7 @@
               <input type="radio"> Take
               <input type="number" style="width:40px;" value="691" disabled> questions from entire exam file <br><br>
               <input type="radio"> Take question range from 
-              <input type="number" value="1" style="width:40px;" disabled> to <input type="number" style="width:40px;" disabled value="691"><br><br>
+              <input type="number" value="1" style="width:40px;" name="valueone" > to <input type="number" style="width:40px;" name="valuetwo"  value="691"><br><br>
               <input type="radio"> Take question that I have answered incorrectly 
               <input type="number" value="1" style="width:40px;"> or more times <br><br>
               <input type="checkbox"> Training mode <br>
@@ -91,7 +91,7 @@
                         <input type="checkbox"><label for="timer">Timer on</label>
                     </div>
                     <div>
-                        <label for="limit">Time limit (minutes): </label><input type="number"  style="width:70px;" value="120">
+                        <label for="limit">Time limit (minutes): </label><input type="number"  style="width:70px;" value="120" readonly>
                     </div>
                 </div>
               </fieldset>

@@ -14,7 +14,7 @@ use App\Models\Result;
 class QuestionController extends Controller
 {
     public function showquestion(){
-        $Questions = Questions::join('categories' , 'categories.cat_id' , 'questions.cat_id')->paginate(60);
+        $Questions = Questions::join('categories' , 'categories.cat_id' , 'questions.cat_id')->paginate(6);
         return view('dashboards.admins.Questions.showQuestions' , compact('Questions'));
     }
     public function savequestion(Request $request){
@@ -103,10 +103,12 @@ class QuestionController extends Controller
         return view('dashboards.admins.Questions.importviafile');
 
     }
-    public function saveviafile(){
-        Excel::Import(new QuestionImport , request()->file('file'));
-        return redirect()->back();
-    }
+   
+    public function saveviafile()
+{
+    Excel::import(new QuestionImport, request()->file('file'));
+    return redirect(route('admin.showquestion'))->with('status', 'All Question Imported Successfully');
+}
 
 
     public function seeresult(){

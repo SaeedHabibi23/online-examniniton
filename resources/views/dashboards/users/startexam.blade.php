@@ -168,7 +168,7 @@ body {
             <div>
                 <button> <a style="text-decoration:none; color:black;" href="{{ route('user.previousquestion' , Crypt::encryptString($data['Questions']->question_id))}}"> Previous </a></button>
                 
-                <input type="submit" style="height:28px; cursor:pointer;" value="Next"> 
+                <input type="submit" class="newxt" style="height:28px; cursor:pointer;" value="Next"> 
                 </form>
                 <select name="review" id="review">
                     <option value="reviewAll">Review All</option>
@@ -176,36 +176,79 @@ body {
                 </select>
             </div>
             <div>
-                <button>Pause</button>
+            <button id="timerButton">Pause</button>
                 <button>Save Session</button>
-                <button>End Exam</button>
+                <button> 
+                  <a href="{{route('user.checkresult')}}" class="endexaminate" style="text-decoration:none;color:black;"> End Exam </a>
+                  
+                </button>
             </div>
         </div>
     </footer>
-    <script>
-    function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        setInterval(function () {
-            minutes = parseInt(timer / 60, 10)
-            seconds = parseInt(timer % 60, 10);
+   
+<script>
+var isPaused = false;
+var interval;
+var timer;
 
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
+function startTimer(duration, display) {
+    var minutes, seconds;
+    interval = setInterval(function () {
+        if (isPaused) {
+            clearInterval(interval);
+            return;
+        }
 
-            display.textContent = minutes + ":" + seconds;
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
-            if (--timer < 0) {
-                timer = 0;
-            }
-        }, 1000);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+            clearInterval(interval);
+            disableRadioButtons(); // فراخوانی تابع برای غیرفعال کردن رادیو باتن‌ها
+        }
+        localStorage.setItem('timer', timer); // ذخیره‌ی مقدار تایمر در localStorage
+    }, 1000);
+}
+
+function disableRadioButtons() {
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(function(radio) {
+        radio.disabled = true; // غیرفعال کردن همه‌ی رادیو باتن‌ها
+    });
+}
+
+window.onload = function () {
+    var display = document.querySelector('#timer');
+    var storedTimer = localStorage.getItem('timer');
+    if (storedTimer) {
+        timer = parseInt(storedTimer, 10);
+    } else {
+        timer = parseInt(display.textContent, 10);
     }
+    startTimer(timer, display);
+};
 
-    window.onload = function () {
-        var display = document.querySelector('#timer');
-        var duration = parseInt(display.textContent, 10);
+document.getElementById('timerButton').addEventListener('click', function() {
+    if (isPaused) {
+        isPaused = false;
+        this.textContent = 'Pause';
+        startTimer(timer, document.querySelector('#timer'));
+    } else {
+        isPaused = true;
+        this.textContent = 'Start';
+    }
+});
 
-        startTimer(duration, display);
-    };
+document.querySelector('.endexaminate').addEventListener('click', function() {
+    localStorage.removeItem('timer'); // حذف مقدار تایمر از localStorage
+});
+   
 </script>
 <script>
   const range = document.getElementById('resolution');
