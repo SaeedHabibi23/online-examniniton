@@ -127,7 +127,7 @@ body {
     </nav>
     <div class="mainContent">
         <div class="subMainContent">
-            <p>Item {{$data['Questions']->question_id}} of {{$data['Questions']->count()}} (Exam A, Q7)</p>
+            <p>Item {{$data['Questions']->question_id}} of {{$data['valuetwo']}} (Exam A, Q7)</p>
             <ul class="nav-links">
                 <li class="choseBtn">
                     <button>Show Answer</button>
@@ -152,6 +152,7 @@ body {
                 <input type="radio" value="3" name="valueone"><label for="a"> C. {{$data['Questions']->answerthree}} </label><br>
                 <input type="radio" value="4" name="valueone"><label for="a"> D. {{$data['Questions']->answerfour}} </label><br>
            
+                <input type="hidden" name="valuemax" id="" value="{{$data['valuetwo']}}">
         </div>
     </div>
     <footer style="position: sticky;">

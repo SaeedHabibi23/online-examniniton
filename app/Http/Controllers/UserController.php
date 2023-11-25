@@ -29,6 +29,7 @@ class UserController extends Controller
         // return $cat_id;
         $Questions = Questions::join('categories' , 'categories.cat_id' , 'questions.cat_id')
         ->where('categories.cat_id' , '=' , $cat_id)
+        ->where('questions.question_id' , '<' , $valuetwo)
         ->orderBy('question_id')
         ->first();
 
@@ -36,7 +37,8 @@ class UserController extends Controller
 
         $data = [
             'Questions' => $Questions ,
-            'categories' => $categories
+            'categories' => $categories , 
+            'valuetwo' => $valuetwo , 
         ];
 
         return view('dashboards.users.startexam' , compact('data'));
@@ -44,7 +46,7 @@ class UserController extends Controller
     public function nextquestion(Request $request, $question_id){
         // return $request->valueone;
    
-        
+    $valuetwo =  $request->valuemax;
     $decrypted = Crypt::decryptString($question_id);
 
      $answerpre = Answer::join('users' , 'users.id' , 'answers.id')
@@ -75,8 +77,9 @@ class UserController extends Controller
 while (!$foundQuestion) {
     $Questions = Questions::join('categories', 'categories.cat_id', 'questions.cat_id')
         ->where('questions.question_id', '=', $id)
+        ->where('questions.question_id' , '<' , $valuetwo)
         ->first();
-
+        
         $Questionslaset_id = Questions::join('categories', 'categories.cat_id', 'questions.cat_id')
         ->orderBy('question_id', 'DESC')
         ->first();
@@ -98,6 +101,7 @@ if ($foundQuestion) {
     $categories = categories::where('cat_id', '=', $Questions->cat_id)->first();
 
     $data = [
+        'valuetwo' => $valuetwo , 
         'Questions' => $Questions,
         'categories' => $categories
     ];
