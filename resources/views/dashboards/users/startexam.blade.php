@@ -127,7 +127,7 @@ body {
     </nav>
     <div class="mainContent">
         <div class="subMainContent">
-            <p>Item {{$data['Questions']->question_id}} of {{$data['valuetwo']}} (Exam A, Q7)</p>
+            <p>Item {{$data['fromfirst']}} of {{$data['valuetwo']}} (Exam A, Q7)</p>
             <ul class="nav-links">
                 <li class="choseBtn">
                     <button>Show Answer</button>
@@ -153,6 +153,8 @@ body {
                 <input type="radio" value="4" name="valueone"><label for="a"> D. {{$data['Questions']->answerfour}} </label><br>
            
                 <input type="hidden" name="valuemax" id="" value="{{$data['valuetwo']}}">
+                <input type="hidden" name="fromfirst" id="" value="{{$data['fromfirst']}}">
+                
         </div>
     </div>
     <footer style="position: sticky;">
@@ -167,7 +169,11 @@ body {
         </div>
         <div class="footerBtn">
             <div>
-                <button> <a style="text-decoration:none; color:black;" href="{{ route('user.previousquestion' , Crypt::encryptString($data['Questions']->question_id))}}"> Previous </a></button>
+                <button> 
+                <a style="text-decoration:none; color:black;" href="{{ route('user.previousquestion', ['question_id' => Crypt::encryptString($data['Questions']->question_id), 'fromfirst' => $data['fromfirst'], 'valuetwo' => $data['valuetwo']]) }}">Previous</a>
+
+
+                </button>
                 
                 <input type="submit" class="newxt" style="height:28px; cursor:pointer;" value="Next"> 
                 </form>

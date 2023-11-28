@@ -79,7 +79,7 @@
               <input type="radio"> Take
               <input type="number" style="width:40px;" value="691" disabled> questions from entire exam file <br><br>
               <input type="radio"> Take question range from 
-              <input type="number" value="1" style="width:40px;" name="valueone" disabled> to <input type="number" style="width:40px;" name="valuetwo"  value="691"><br><br>
+              <input type="number" name="fromfirst" value="1" style="width:40px;"  readonly> to <input type="number" style="width:40px;" name="valuetwo"  value="691"><br><br>
               <input type="radio"> Take question that I have answered incorrectly 
               <input type="number" value="1" style="width:40px;"> or more times <br><br>
               <input type="checkbox"> Training mode <br>

@@ -25,7 +25,7 @@ class UserController extends Controller
         $cat_id = $request->cat_id;
         $valueone = $request->valueone;
         $valuetwo = $request->valuetwo;
-        
+        $fromfirst = $request->fromfirst;
         // return $cat_id;
         $Questions = Questions::join('categories' , 'categories.cat_id' , 'questions.cat_id')
         ->where('categories.cat_id' , '=' , $cat_id)
@@ -39,6 +39,7 @@ class UserController extends Controller
             'Questions' => $Questions ,
             'categories' => $categories , 
             'valuetwo' => $valuetwo , 
+            'fromfirst' => $fromfirst ,
         ];
 
         return view('dashboards.users.startexam' , compact('data'));
@@ -47,6 +48,7 @@ class UserController extends Controller
         // return $request->valueone;
    
     $valuetwo =  $request->valuemax;
+    $fromfirst = $request->fromfirst;
     $decrypted = Crypt::decryptString($question_id);
 
      $answerpre = Answer::join('users' , 'users.id' , 'answers.id')
@@ -72,6 +74,7 @@ class UserController extends Controller
      }
 
     $id =  $decrypted + 1;
+    $fromfirst = $fromfirst + 1;
     $foundQuestion = false;
 
 while (!$foundQuestion) {
@@ -103,7 +106,8 @@ if ($foundQuestion) {
     $data = [
         'valuetwo' => $valuetwo , 
         'Questions' => $Questions,
-        'categories' => $categories
+        'categories' => $categories , 
+        'fromfirst' => $fromfirst
     ];
 
     return view('dashboards.users.startexam', compact('data'));
@@ -128,10 +132,19 @@ if ($foundQuestion) {
 
 
 
-    public function previousquestion($question_id){
+    public function previousquestion($question_id, Request $request){
         $decrypted = Crypt::decryptString($question_id);
-        
+        $fromfirst = $request->input('fromfirst');
+        $valuetwo = $request->input('valuetwo');
+
+       
+
+        // return $fromFirst;
+        // return $fromfirst;
+        // Id form first added
 $id =  $decrypted - 1;
+$fromfirst = $fromfirst -1;
+// return $fromfirst;
 $foundQuestion = false;
 
 while (!$foundQuestion) {
@@ -147,6 +160,9 @@ while (!$foundQuestion) {
         $foundQuestion = true;
     } else {
         $id--; // اگر رکوردی با این آیدی وجود نداشت، آیدی را یک واحد افزایش دهید و دوباره جستجو کنید
+    
+        $fromfirst--;
+        // $valuetwo = $valueTwo -1;
     }
 
     // اگر آیدی به حداکثر مقدار ممکن رسیده باشد، معنی آن این است که تمام سوالات پاسخ داده شده‌اند
@@ -162,6 +178,8 @@ if ($foundQuestion) {
     $data = [
         'Questions' => $Questions,
         'categories' => $categories , 
+        'fromfirst' => $fromfirst , 
+        'valuetwo' => $valuetwo
     ];
 
     return view('dashboards.users.startexam', compact('data'));
